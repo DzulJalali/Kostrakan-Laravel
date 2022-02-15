@@ -79,5 +79,8 @@
 </div>
 @endif
 
+<div class="nextpage">
+    {!! $bangunan->links() !!}
+</div>
 
 @endsection
