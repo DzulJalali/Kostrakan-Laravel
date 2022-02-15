@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container-gambar {
+  position: relative;
+  right:50px;
+  top: -100px ;
+  margin-bottom: -100px;
+ 
+}
+
+/* Hide img */
+.mySlides {
+  display: none;
+}
+.img{
+	height:400px;
+ 	width:100%;
+}
+
+/* Add a pointer */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width:230px;
+	height:105px;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+  height:150px;
+  width:100%;
+  
+
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.card{
+  text-align: center;
+  width:180px;
+  height:191px;
+  position: relative;
+  left: 1100px;
+  top: 90px;
+  
+}
+
+.profile-picture{
+  border-radius: 50%;
+  width:100px;
+  height:200px;
+  margin-left: 40px;
+}
+
+.nama{
+  font-family:Roboto;
+	text-align:center;
+	font-size:20px;
+	letter-spacing:0;
+}
+
+.title{
+  font-family:Roboto;
+	text-align:center;
+	font-size:14px;
+	letter-spacing:0;
+}
+
+.tombol{
+  justify-content: center;
+  
+}
+.alamat{
+	color:rgba(224.18749898672104, 40.16693025827408, 40.16693025827408, 1);
+}
+.table{
+	font-family:Arial;
+	text-align:left;
+	font-size:14px;
+	letter-spacing:0;
+	margin-top: -30px;
+	border-collapse: collapse;
+	padding: 0;
+}
+
+.general-information{
+  margin: 150px;
+  margin-left: 40px;
+}
+
+
+/* CSS buat General Information */
+.info { 
+	color:rgba(0, 0, 0, 1);
+	width:160px;
+	height:21px;
+	position:relative;
+	left:0px;
+	top: -40px;
+	font-family:Roboto;
+	text-align:left;
+	font-size:18px;
+	letter-spacing:0;
+}
+
+.div1{
+	left: 0;
+	position: relative;
+}
