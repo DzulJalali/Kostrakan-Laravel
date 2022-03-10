@@ -8,7 +8,7 @@ Kelurahan
 <div class="card background-table">
     <div class="d-flex justify-content-between">
         <a class="btn btn-primary mb-2 btn-responsive col-sm-12 col-md-6 col-lg-4 col-xl-2"
-            href="{{route('tambahKelurahan')}}" role="button">Tambah Kecamatan</a>
+            href="{{route('tambahKelurahan')}}" role="button">Tambah Kelurahan</a>
         <form action="{{route('kelurahan')}}" method="GET" class="form-inline my-2 my-lg-0">
             <input type="search" name="cari" placeholder="Search" aria-label="Search" class="form-control mr-sm-2">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -18,8 +18,8 @@ Kelurahan
         <thead>
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Nama Kecamatan</th>
                 <th scope="col">Nama Kelurahan</th>
+                <th scope="col">Nama Kecamatan</th>
                 <th scope="col">Nama Kota</th>
                 <th scope="col" class="text-center"><i class="fas fa-cog"></i></th>
             </tr>
@@ -30,8 +30,8 @@ Kelurahan
             @foreach($dataKelurahan as $datakelurahan)
             <tr>
                 <td data-label="No">{{$no++}}</td>
-                <td data-label="Nama Kecamatan">{{$datakelurahan['namaKecamatan']}}</td>
                 <td data-label="Nama Kelurahan">{{$datakelurahan['namaKelurahan']}}</td>
+                <td data-label="Nama Kecamatan">{{$datakelurahan['namaKecamatan']}}</td>
                 <td data-label="Nama Kota">{{$datakelurahan['namaKota']}}</td>
                 <td data-label="Option">
                     <a href="/kelurahan/detail/{{$datakelurahan['id_kelurahan']}}" class="btn btn-primary">

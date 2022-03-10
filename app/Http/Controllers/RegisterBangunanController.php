@@ -134,6 +134,16 @@ class RegisterBangunanController extends Controller
 
     public function updateBangunanByOwner(Request $request, $id)
     {
+        $old_image_name1 = $request->hidden_image1;
+        $old_image_name2 = $request->hidden_image2;
+        $old_image_name3 = $request->hidden_image3;
+        $old_image_name4 = $request->hidden_image4;
+
+        $image1 = $request->file('gambar1');
+        $image2 = $request->file('gambar2');
+        $image3 = $request->file('gambar3');
+        $image4 = $request->file('gambar4');
+
         $request->validate([
             'alamat' => 'required',
             'tipe_id' => 'required',
@@ -153,54 +163,46 @@ class RegisterBangunanController extends Controller
   
         $input1 = $request->all();
   
-        if ($image1 = $request->file('gambar1')) {
-            $destinationPath = 'uploads';
-            $image_name1 = date('YmdHis') . "." . $image1->getClientOriginalExtension();
-            $image1->move($destinationPath, $image_name1);
-            $input1['gambar1'] = "$image_name1";
+        if ($image1 != null) {
+            $image_name1 = rand(). '.' .$image1->getClientOriginalExtension();
+            $image1->move('uploads', $image_name1);
         }
         else
         {
-            unset($input1['gambar1']);
+            $image_name1 = $old_image_name1;
         }
 
         $input2 = $request->all();
   
-        if ($image2 = $request->file('gambar2')) {
-            $destinationPath = 'uploads';
-            $image_name2 = date('YmdHis') . "." . $image2->getClientOriginalExtension();
-            $image2->move($destinationPath, $image_name2);
-            $input2['gambar2'] = "$image_name2";
+        if ($image2 != null) {
+            $image_name2 = rand(). '.' .$image2->getClientOriginalExtension();
+            $image2->move('uploads', $image_name2);
         }
         else
         {
-            unset($input2['gambar2']);
+            $image_name2 = $old_image_name2;
         }
 
         $input3 = $request->all();
   
-        if ($image3 = $request->file('gambar3')) {
-            $destinationPath = 'uploads';
-            $image_name3 = date('YmdHis') . "." . $image3->getClientOriginalExtension();
-            $image3->move($destinationPath, $image_name3);
-            $input3['gambar3'] = "$image_name3";
+        if ($image3 != null) {
+            $image_name3 = rand(). '.' .$image3->getClientOriginalExtension();
+            $image3->move('uploads', $image_name3);
         }
         else
         {
-            unset($input3['gambar3']);
+            $image_name3 = $old_image_name3;
         }
         
         $input4 = $request->all();
   
-        if ($image4 = $request->file('gambar4')) {
-            $destinationPath = 'uploads';
-            $image_name4 = date('YmdHis') . "." . $image4->getClientOriginalExtension();
-            $image4->move($destinationPath, $image_name4);
-            $input4['gambar4'] = "$image_name4";
+        if ($image4 != null) {
+            $image_name4 = rand(). '.' .$image4->getClientOriginalExtension();
+            $image4->move('uploads', $image_name4);
         }
         else
         {
-            unset($input4['gambar4']);
+            $image_name4 = $old_image_name4;
         }
 
         $data = 

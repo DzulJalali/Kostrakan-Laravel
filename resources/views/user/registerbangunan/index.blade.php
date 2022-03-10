@@ -1,6 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
+<style>
+    .nextpage
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 <div class="container">
     <h1>Ini Halaman Index Pemilik</h1>
     <h4>List Bangunan yang diposting</h4>
@@ -32,6 +40,7 @@
                     <th>Luas Bangunan</th>
                     <th>Jumlah Lantai</th>
                     <th>Fasilitas</th>
+                    <th>Dekat Kampus</th>
                     <th>Harga</th>
                     <th>Gambar 1</th>
                     <th>Gambar 2</th>
@@ -53,6 +62,7 @@
                     <td>{{ $bangunan->luas_bangunan }}</td>
                     <td>{{ $bangunan->jmlh_lantai }}</td>
                     <td>{{ $bangunan->keterangan_fasilitas }}</td>
+                    <td>{{ $bangunan->namaKampus }}</td>
                     <td>{{ $bangunan->harga }}</td>
                     <td>
                         <img src="{{ asset('uploads/' . $bangunan->gambar1) }}" width="200px" height="200px">
@@ -80,7 +90,7 @@
 @endif
 
 <div class="nextpage">
-    {!! $bangunan->links() !!}
+    {!! $detailBangunanByUser->links() !!}
 </div>
 
 @endsection

@@ -38,7 +38,7 @@ use App\Http\RegisterBangunanController;
 
 Auth::routes();
 
-Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home/search', [App\Http\Controllers\HomeController::class, 'searchwithkeyword'])->name('search');
 Route::get('/home/advancesearch', [App\Http\Controllers\HomeController::class, 'advanceSearch'])->name('advancesearch');
@@ -58,7 +58,7 @@ Route::post('/register/needs/submit', [App\Http\Controllers\CBFController::class
 
 Route::get('/recommendations', function(){
 	$contentsByContentBasedFiltering = BuildingDetails::filteredByUser();
-    // dd($contentsByContentBasedFiltering);
+    dd($contentsByContentBasedFiltering);
 
     return view('home', compact(['contentsByContentBasedFiltering']));
 })->name('recommendations');
@@ -166,4 +166,4 @@ Route::get('/admin/kampus/detail/{id}', [App\Http\Controllers\KampusController::
 
 
 //
-Route::get('/detail-kampus/{id}',[App\Http\Controllers\DetailController::class,'getKoskontrakanbyKampus']);
+Route::get('/detail-kampus/{data}',[App\Http\Controllers\DetailController::class,'getKoskontrakanbyKampus']);

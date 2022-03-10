@@ -91,7 +91,7 @@
             <div class="form-group">
                 <label for="namaKampus">Pilih Kampus yang dekat dengan Kos/Kontrakan :</label>
                     <select name="namaKampus" class="selectpicker show-tick form-control">
-                        <option selected="selected">-Pilih Kampus-</option>
+                        <option selected="selected"></option>
                         @foreach ($kampus as $kampus)
                         <option value="{{ $kampus['namaKampus'] }}">{{ $kampus['namaKampus'] }}</option>
                         @endforeach

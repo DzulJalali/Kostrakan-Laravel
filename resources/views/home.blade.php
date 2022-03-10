@@ -12,6 +12,13 @@
         justify-content: center;
         align-items: center;
     }
+    h3
+    {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        align-items: center;
+    }
 </style>
 <div class="container-fluid">
     <center>
@@ -93,24 +100,25 @@
 <center class="py-3">
     <h3>Kontrakan Dan Kos-Kosan Didekat Kampus</h3>
 </center>
-
-<div class="row">
-    @foreach($dataKampus as $dataKampus)
-    <div class="card " style="width: 15rem;">
-        <a href="/detail-kampus/{{ $dataKampus['id_kampus'] }}" style="text-decoration: none;">
-            <div class="card-body">
-                <h5 class="card-title">{{ $dataKampus['namaKampus'] }}</h5>
-                <p class="card-text">{{ $dataKampus['alamatKampus'] }}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Kota : {{ $dataKampus['namaKota'] }}</li>
-                <li class="list-group-item">Kelurahan : {{ $dataKampus['namaKelurahan'] }}</li>
-                <li class="list-group-item">Kecamatan : {{ $dataKampus['namaKecamatan'] }}</li>
-            </ul>
-        </a>
+<div class="container">
+    <div class="row">
+        @foreach($dataKampus as $dataKampus)
+        <div class="card " style="width: 15rem;">
+            <a href="/detail-kampus/{{ $dataKampus['namaKampus'] }}" style="text-decoration: none;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $dataKampus['namaKampus'] }}</h5>
+                    <p class="card-text">{{ $dataKampus['alamatKampus'] }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Kota : {{ $dataKampus['namaKota'] }}</li>
+                    <li class="list-group-item">Kelurahan : {{ $dataKampus['namaKelurahan'] }}</li>
+                    <li class="list-group-item">Kecamatan : {{ $dataKampus['namaKecamatan'] }}</li>
+                </ul>
+            </a>
+        </div>
+        @endforeach
     </div>
-    @endforeach
- </div>
+</div>
  <br><br>
 
 

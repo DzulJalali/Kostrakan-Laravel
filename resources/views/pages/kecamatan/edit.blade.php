@@ -21,29 +21,35 @@
     </div>
     @endif
     <div class="card shadow">
+        @foreach ($dataKecamatan as $dkm)
         <div class="card-body">
-            <form action="/kecamatan/update/{{$dataKecamatan['id_kecamatan']}}" method="post">
+            <form action="/kecamatan/update/{{$dkm['id_kecamatan']}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="kode_pos">Kode Pos</label>
                     <input type="text" class="form-control" name="kode_pos" placeholder="Masukan Kode Pos"
-                        value="{{ $dataKecamatan['kode_pos']}}">
+                        value="{{ $dkm['kode_pos']}}">
                 </div>
                 <div class="form-group">
                     <label for="namaKecamatan">Nama Kecamatan</label>
                     <input type="text" class="form-control" name="namaKecamatan" placeholder="Masukan Nama Kecamatan"
-                        value="{{ $dataKecamatan['namaKecamatan']}}">
+                        value="{{ $dkm['namaKecamatan']}}">
                 </div>
                 <div class="form-group">
                     <label for="namaKota">Nama Kota</label>
-                    <input type="text" class="form-control" name="namaKota" placeholder="Masukan Nama Kota"
-                        value="{{ $dataKecamatan['namaKota']}}">
+                    <select name="id_kota" class="selectpicker show-tick form-control">
+                        <option selected="selected">{{ $dkm['namaKota']}}</option>
+                        @foreach ($dataDaerah as $dataDaerah)
+                        <option value="{{ $dataDaerah['id_kota'] }}">{{ $dataDaerah['namaKota'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan
                 </button>
             </form>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -28,10 +28,10 @@ class DetailController extends Controller
         return view('user.detail', $data);
     }
 
-    public function getKoskontrakanbyKampus()
+    public function getKoskontrakanbyKampus($data)
     {
         $data=[
-            'detailKampus' => $this->detailBangunan->getAllByKampus(),
+            'detailKampus' => $this->detailBangunan->getAllByKampus($data),
             'dataKampus'=>$this->kampus->all_data(),
         ];
         // dd($data);

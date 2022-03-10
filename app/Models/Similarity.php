@@ -48,7 +48,7 @@ class Similarity extends Model
         return count($intersection) / count($union);
     }
 
-    public static function minMaxNorm(array $values, $min = null, $max = null): array   /*Transformamos el conjunto de valores dado ($values) en un conjunto de valores dentro del rango 0 a 1 (Normalización min-max)*/
+    public static function minMaxNorm(array $values, $min = null, $max = null): array
     {
         $norm = [];
         $min = $min ?? min($values);

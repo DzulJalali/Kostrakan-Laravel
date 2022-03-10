@@ -59,9 +59,9 @@ class BuildingDetails extends Model
                 
     }
 
-    public function getAllByKampus(){
+    public function getAllByKampus($data){
         return DB::table('building_details')
-        // ->where('namaKampus', '=', $data->namaKampus)
+        ->where('namaKampus', '=', $data)
                 ->leftjoin('building_types as bt', 'bt.tipe_id', '=', 'building_details.tipe_id')
                 ->leftjoin('cities as ct', 'ct.kk_id', '=', 'building_details.kk_id')
                 ->get();  
@@ -130,42 +130,42 @@ class BuildingDetails extends Model
         ->where('nama_tipe', 'like', '%'. $nama_tipe. '%');
     }
 
-    public function scopeHarga($query, $harga)
-    {
-        switch ($harga)
-        {
-            case 'Minus 10000000':
-                return $query = DB::table('building_details')->where('harga', '<', 10000000);
-                break;
-            case '10000000 - 20000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [10000000, 20000000]);
-                break;
-            case '20000000 - 30000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [20000000, 30000000]);
-                break;
-            case '30000000 - 40000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [30000000, 40000000]);
-                break;
-            case '40000000 - 50000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [40000000, 50000000]);
-                break;
-            case '50000000 - 60000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [50000000, 60000000]);
-                break;
-            case '60000000 - 70000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [60000000, 70000000]);
-                break;
-            case '70000000 - 80000000':
-                return $query = DB::table('building_details')->whereBetween('harga', [70000000, 80000000]);
-                break;
-            case 'More 80000000':
-                return $query = DB::table('building_details')->whereBetween('harga', '>', 80000000);
-                break;
-            default:
-                return 0;
-                break;
-        }
-    }
+    // public function scopeHarga($query, $harga)
+    // {
+    //     switch ($harga)
+    //     {
+    //         case 'Minus 10000000':
+    //             return $query = DB::table('building_details')->where('harga', '<', 10000000);
+    //             break;
+    //         case '10000000 - 20000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [10000000, 20000000]);
+    //             break;
+    //         case '20000000 - 30000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [20000000, 30000000]);
+    //             break;
+    //         case '30000000 - 40000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [30000000, 40000000]);
+    //             break;
+    //         case '40000000 - 50000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [40000000, 50000000]);
+    //             break;
+    //         case '50000000 - 60000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [50000000, 60000000]);
+    //             break;
+    //         case '60000000 - 70000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [60000000, 70000000]);
+    //             break;
+    //         case '70000000 - 80000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', [70000000, 80000000]);
+    //             break;
+    //         case 'More 80000000':
+    //             return $query = DB::table('building_details')->whereBetween('harga', '>', 80000000);
+    //             break;
+    //         default:
+    //             return 0;
+    //             break;
+    //     }
+    // }
 
     public function scopePublishedDate($query, $publishedDate)
     {
@@ -276,7 +276,5 @@ class BuildingDetails extends Model
 
         return $recommendedContentByFilter;
     }
-
-
 
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\BuildingDetails;
 use App\Models\BuildingTypes;
 use App\Models\Cities;
+use App\Models\Kampus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class BuildingController extends Controller
         $this->bangunan = new BuildingDetails();
         $this->tipe = new BuildingTypes();
         $this->kotakabu = new Cities();
+        $this->kampus = new Kampus();
     }
 
     /**
@@ -46,6 +48,7 @@ class BuildingController extends Controller
         $data=[
             'tipeBangunan' => $this->tipe->getAll(),
             'cities' => $this->kotakabu->getAll(),
+            'kampus' => $this->kampus->all_data(),
             
         ];
         return view('crud.bangunan.create', $data);
@@ -101,6 +104,7 @@ class BuildingController extends Controller
             'jmlh_lantai' => $request->jmlh_lantai,
             'keterangan_fasilitas' => $request->keterangan_fasilitas,
             'harga' => $request->harga,
+            'namaKampus' => $request->namaKampus,
             'gambar1'=> $new_image1,
             'gambar2'=> $new_image2,
             'gambar3'=> $new_image3,
@@ -146,6 +150,7 @@ class BuildingController extends Controller
         [
             'editBangunan' => $this->bangunan->editBangunan($id),
             'tipeBangunan' => $this->tipe->getAll(),
+            'kampus' => $this->kampus->all_data(),
             'cities' => $this->kotakabu->getAll(),
         ];
         return view('crud.bangunan.edit', $data);
@@ -160,6 +165,12 @@ class BuildingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $old_image_name = $request->hidden_image;
+        $image1 = $request->file('gambar1');
+        $image2 = $request->file('gambar2');
+        $image3 = $request->file('gambar3');
+        $image4 = $request->file('gambar4');
+
         $request->validate([
             'alamat' => 'required',
             'tipe_id' => 'required',
@@ -179,54 +190,46 @@ class BuildingController extends Controller
   
         $input1 = $request->all();
   
-        if ($image1 = $request->file('gambar1')) {
-            $destinationPath = 'uploads';
-            $image_name1 = date('YmdHis') . "." . $image1->getClientOriginalExtension();
-            $image1->move($destinationPath, $image_name1);
-            $input1['gambar1'] = "$image_name1";
+        if ($image1 != null) {
+            $image_name1 = rand(). '.' .$image1->getClientOriginalExtension();
+            $image1->move('uploads', $image_name1);
         }
         else
         {
-            unset($input1['gambar1']);
+            $image_name1 = $old_image_name;
         }
 
         $input2 = $request->all();
   
-        if ($image2 = $request->file('gambar2')) {
-            $destinationPath = 'uploads';
-            $image_name2 = date('YmdHis') . "." . $image2->getClientOriginalExtension();
-            $image2->move($destinationPath, $image_name2);
-            $input2['gambar2'] = "$image_name2";
+        if ($image2 != null) {
+            $image_name2 = rand(). '.' .$image2->getClientOriginalExtension();
+            $image2->move('uploads', $image_name2);
         }
         else
         {
-            unset($input2['gambar2']);
+            $image_name2 = $old_image_name;
         }
 
         $input3 = $request->all();
   
-        if ($image3 = $request->file('gambar3')) {
-            $destinationPath = 'uploads';
-            $image_name3 = date('YmdHis') . "." . $image3->getClientOriginalExtension();
-            $image3->move($destinationPath, $image_name3);
-            $input3['gambar3'] = "$image_name3";
+        if ($image3 != null) {
+            $image_name3 = rand(). '.' .$image3->getClientOriginalExtension();
+            $image3->move('uploads', $image_name3);
         }
         else
         {
-            unset($input3['gambar3']);
+            $image_name3 = $old_image_name;
         }
         
         $input4 = $request->all();
   
-        if ($image4 = $request->file('gambar4')) {
-            $destinationPath = 'uploads';
-            $image_name4 = date('YmdHis') . "." . $image4->getClientOriginalExtension();
-            $image4->move($destinationPath, $image_name4);
-            $input4['gambar4'] = "$image_name4";
+        if ($image4 != null) {
+            $image_name4 = rand(). '.' .$image4->getClientOriginalExtension();
+            $image4->move('uploads', $image_name4);
         }
         else
         {
-            unset($input4['gambar4']);
+            $image_name4 = $old_image_name;
         }
 
         $data = 
@@ -242,6 +245,7 @@ class BuildingController extends Controller
             'jmlh_lantai' => $request->jmlh_lantai,
             'keterangan_fasilitas' => $request->keterangan_fasilitas,
             'harga' => $request->harga,
+            'namaKampus' => $request->namaKampus,
             'gambar1'=> $image_name1,
             'gambar2'=> $image_name2,
             'gambar3'=> $image_name3,

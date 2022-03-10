@@ -121,48 +121,6 @@ class ContentBasedFilter extends Model
         return $matrix;
     }
 
-    // public function calculateSimilaritiesMatrix(): array
-    // {
-    //     $matrix = [];
-    //     // dd($this->building_details[1]['kk_id']);
-    //     foreach ($this->content_filtering as $building) 
-    //     {
-
-    //         $similarityScores = [];
-    //         // dd($building);
-    //         foreach ($this->building_details as $_building) 
-    //         {
-    //             if ($building['kk_id'] != $_building['kk_id']) 
-    //             {
-    //                 continue;
-    //             }
-    //             $similarityScores['building_id_' . $_building['building_id']] = $this->calculateSimilarity($building, $_building);
-
-    //         }
-    //         $matrix['building_id_' . $building['kk_id']] = $similarityScores;
-    //     }
-    //     return $matrix;
-    // }
-
-
-    // public function calculateSimilaritiesMatrix(): array
-    // {
-    //     $matrix = [];
-
-    //     foreach ($this->content_filtering as $building) {
-
-    //         $similarityScores = [];
-
-    //         foreach ($this->building_details as $_building) {
-    //             if ($building['building_id'] === $_building['building_id']) {
-    //                 continue;
-    //             }
-    //             $similarityScores['building_id_' . $_building['building_id']] = $this->calculateSimilarity($building, $_building);
-    //         }
-    //         $matrix['building_id_' . $building['building_id']] = $similarityScores;
-    //     }
-    //     return $matrix;
-    // }
 
     public function getBuildingBySimiliarities($buildingId, $matrix): array
     {

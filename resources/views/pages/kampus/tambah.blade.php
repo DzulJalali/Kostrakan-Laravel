@@ -38,16 +38,28 @@ Tambah Kampus
                 </div>
 
                 <div class="form-group">
-                    <label for="namaKecamatan">Nama Kecamatan</label>
-                    <input type="text" class="form-control" name="namaKecamatan" placeholder="Masukan Kecamatan">
+                    <select name="id_kecamatan" class="selectpicker show-tick form-control">
+                        <option selected="selected">Pilih Nama Kecamatan</option>
+                        @foreach ($dataKecamatan as $dataKecamatan)
+                        <option value="{{ $dataKecamatan['id_kecamatan'] }}">{{ $dataKecamatan['namaKecamatan'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="namaKota">Nama Kota</label>
-                    <input type="text" class="form-control" name="namaKota" placeholder="Masukan Nama Kota">
+                    <select name="id_kota" class="selectpicker show-tick form-control">
+                        <option selected="selected">Pilih Nama Kota</option>
+                        @foreach ($dataDaerah as $dataDaerah)
+                        <option value="{{ $dataDaerah['id_kota'] }}">{{ $dataDaerah['namaKota'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="namaKelurahan">Nama Kelurahan</label>
-                    <input type="text" class="form-control" name="namaKelurahan" placeholder="Masukan Kelurahan">
+                    <select name="id_kelurahan" class="selectpicker show-tick form-control">
+                        <option selected="selected">Pilih Nama Kelurahan</option>
+                        @foreach ($dataKelurahan as $dataKelurahan)
+                        <option value="{{ $dataKelurahan['id_kelurahan'] }}">{{ $dataKelurahan['namaKelurahan'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan

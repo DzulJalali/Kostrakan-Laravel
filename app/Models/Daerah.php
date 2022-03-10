@@ -10,8 +10,8 @@ class Daerah extends Model
 {
     public function all_data(){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-            ])->get('http://localhost:8080/api/daerah/', [
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+            ])->get('http://localhost:8080/api/kota/', [
                 'key' => '123',
             ]);
         return $response['data'];
@@ -19,8 +19,8 @@ class Daerah extends Model
 
     public function data_id($id){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-            ])->get('http://localhost:8080/api/daerah/'.$id , [
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+            ])->get('http://localhost:8080/api/kota/'.$id , [
                 'key' => '123',
             ]);
         return $response['data'];
@@ -28,8 +28,8 @@ class Daerah extends Model
 
     public function searchData($keyword){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-        ])->get('http://localhost:8080/api/daerah/search/', [
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->get('http://localhost:8080/api/kota/search/', [
             'key' => '123',
             'keyword'=>$keyword,
         ]);
@@ -38,34 +38,27 @@ class Daerah extends Model
 
     public function tambahData($data){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-        ])->post('http://localhost:8080/api/daerah/', [
-            'id_daerah' => $data['id_daerah'],
-            'nama_daerah' => $data['nama_daerah'],
-            'id_kecamatan' => $data['id_kecamatan'],
-            'id_kelurahan' => $data['id_kelurahan'],
-            'nearBy' => $data['nearBy'],
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->post('http://localhost:8080/api/kota/', [
+            'key' => '123',
+            'namaKota' => $data['namaKota'],
+            // 'origin' => $data['origin'],
         ]);
-        return redirect()->route('daerah')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
-    public function editData($id, $data){
+    public function editData($id,$data){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-        ])->put('http://localhost:8080/api/daerah/'.$id , [
-            'id_daerah' => $data['id_daerah'],
-            'nama_daerah' => $data['nama_daerah'],
-            'id_kecamatan' => $data['id_kecamatan'],
-            'id_kelurahan' => $data['id_kelurahan'],
-            'nearBy' => $data['nearBy'],
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->put('http://localhost:8080/api/kota/'.$id, $data,[
+            'key' => '123',
         ]);
-        return redirect()->route('daerah')->with('success', 'Data Berhasil Di Update');
+        // dd($id);
     }
 
     public function deleteData($id){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJZFVzZXIiOiIyIiwiVXNlcm5hbWUiOiJ1Y3VwIn0.XFBa7OfjJgqG3545sgb2UuwV66t2TZ3iwwzQG9fOBFY',
-        ])->delete('http://localhost:8080/api/daerah/'.$id, [
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->delete('http://localhost:8080/api/kota/'.$id, [
             'key' => '123',
         ]);
     }

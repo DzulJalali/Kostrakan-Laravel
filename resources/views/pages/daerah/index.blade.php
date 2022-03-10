@@ -19,9 +19,6 @@ Daerah
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama Daerah</th>
-                <th scope="col">Nama Kecamatan</th>
-                <th scope="col">Nama Kelurahan</th>
-                <th scope="col">Near By</th>
                 <th scope="col" class="text-center"><i class="fas fa-cog"></i></th>
             </tr>
         </thead>
@@ -31,18 +28,15 @@ Daerah
             @foreach($dataDaerah as $dataDaerah)
             <tr>
                 <td data-label="No">{{$no++}}</td>
-                <td data-label="Nama Daerah">{{$dataDaerah['nama_daerah']}}</td>
-                <td data-label="Nama Kecamatan">{{$dataDaerah['nama_kecamatan']}}</td>
-                <td data-label="Nama Kelurahan">{{$dataDaerah['nama_kelurahan']}}</td>
-                <td data-label="Near By">{{$dataDaerah['nearBy']}}</td>
+                <td data-label="Nama Daerah">{{$dataDaerah['namaKota']}}</td>
                 <td data-label="Option">
-                    <a href="/daerah/detail/{{$dataDaerah['id_daerah']}}" class="btn btn-primary">
+                    <a href="/daerah/detail/{{$dataDaerah['id_kota']}}" class="btn btn-primary">
                         <i class="fa fa-eye"></i>
                     </a>
-                    <a href="/daerah/edit/{{$dataDaerah['id_daerah']}}" class="btn btn-info">
+                    <a href="/daerah/edit/{{$dataDaerah['id_kota']}}" class="btn btn-info">
                         <i class="fa fa-pencil-alt"></i>
                     </a>
-                    <button type="button" class="btn btn-danger" data-toggle='modal' data-target="#delete{{$dataDaerah['id_daerah']}}">
+                    <button type="button" class="btn btn-danger" data-toggle='modal' data-target="#delete{{$dataDaerah['id_kota']}}">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
@@ -52,7 +46,7 @@ Daerah
     </table>
 </div>
 
-<div class="modal modal-danger fade" id="delete{{$dataDaerah['id_daerah']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal modal-danger fade" id="delete{{$dataDaerah['id_kota']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modaL-sm" role="document">
         <div class="modal-content">
@@ -65,7 +59,7 @@ Daerah
             <div class="modal-body">Apakah Anda Yakin Hapus Data Ini?</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/daerah/delete/{{$dataDaerah['id_daerah']}}">Delete</a>
+                <a class="btn btn-primary" href="/daerah/delete/{{$dataDaerah['id_kota']}}">Delete</a>
             </div>
         </div>
     </div>

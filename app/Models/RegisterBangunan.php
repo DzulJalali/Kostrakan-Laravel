@@ -15,7 +15,7 @@ class RegisterBangunan extends Model
         $detailBangunan = DB::table('building_details')->select('*')->where('user_id', Auth::user()->user_id)
         ->leftjoin('building_types as bt', 'building_details.tipe_id', '=', 'bt.tipe_id')
                             ->leftjoin('cities as ct', 'building_details.kk_id', '=', 'ct.kk_id')
-                            ->get();
+                            ->paginate(3);
         return $detailBangunan;
     }
 }

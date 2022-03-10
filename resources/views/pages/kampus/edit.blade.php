@@ -21,41 +21,55 @@
     </div>
     @endif
     <div class="card shadow">
+        @foreach($dataKampus as $dkp)
         <div class="card-body">
-            <form action="/admin/kampus/update/{{$dataKampus['id_kampus']}}" method="post">
+            <form action="/admin/kampus/update/{{$dkp['id_kampus']}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="namaKampus">Kode Pos</label>
+                    <label for="namaKampus">Nama Kampus</label>
                     <input type="text" class="form-control" name="namaKampus" placeholder="Masukan Nama Kampus"
-                        value="{{ $dataKampus['namaKampus']}}">
+                        value="{{ $dkp['namaKampus']}}">
                 </div>
                 <div class="form-group">
                     <label for="alamatKampus">Alamat Kampus</label>
                     <input type="text" class="form-control" name="alamatKampus" placeholder="Masukan Alamat Kampus"
-                        value="{{ $dataKampus['alamatKampus']}}">
+                        value="{{ $dkp['alamatKampus']}}">
                 </div>
                 <div class="form-group">
                     <label for="namaKota">Nama Kota</label>
-                    <input type="text" class="form-control" name="namaKota" placeholder="Masukan Nama Kota"
-                        value="{{ $dataKampus['namaKota']}}">
+                    <select name="id_kota" class="selectpicker show-tick form-control">
+                        <option selected="selected">{{ $dkp['namaKota']}}</option>
+                        @foreach ($dataDaerah as $dataDaerah)
+                        <option value="{{ $dataDaerah['id_kota'] }}">{{ $dataDaerah['namaKota'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="namaKecamatan">Nama Kecamatan</label>
-                    <input type="text" class="form-control" name="namaKecamatan" placeholder="Masukan Nama Kecamatan"
-                        value="{{ $dataKampus['namaKecamatan']}}">
+                    <select name="id_kecamatan" class="selectpicker show-tick form-control">
+                        <option selected="selected">{{ $dkp['namaKecamatan']}}</option>
+                        @foreach ($dataKecamatan as $dataKecamatan)
+                        <option value="{{ $dataKecamatan['id_kecamatan'] }}">{{ $dataKecamatan['namaKecamatan'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="namaKelurahan">Nama Kelurahan</label>
-                    <input type="text" class="form-control" name="namaKelurahan" placeholder="Masukan Nama Kelurahan"
-                        value="{{ $dataKampus['namaKelurahan']}}">
+                    <select name="id_kelurahan" class="selectpicker show-tick form-control">
+                        <option selected="selected">{{ $dkp['namaKelurahan']}}</option>
+                        @foreach ($dataKelurahan as $dataKelurahan)
+                        <option value="{{ $dataKelurahan['id_kelurahan'] }}">{{ $dataKelurahan['namaKelurahan'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan
                 </button>
             </form>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

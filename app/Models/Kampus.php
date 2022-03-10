@@ -10,7 +10,7 @@ class Kampus extends Model
 {
     public function all_data(){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
             ])->get('http://localhost:8080/api/kampus/', [
                 'key' => '123',
             ]);
@@ -19,7 +19,7 @@ class Kampus extends Model
 
     public function data_id($id){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
             ])->get('http://localhost:8080/api/kampus/'.$id , [
                 'key' => '123',
             ]);
@@ -28,7 +28,7 @@ class Kampus extends Model
 
     public function searchData($keyword){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
         ])->get('http://localhost:8080/api/kampus/search/', [
             'key' => '123',
             'keyword'=>$keyword,
@@ -39,17 +39,20 @@ class Kampus extends Model
     public function tambahData($data)
     {
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
         ])->post('http://localhost:8080/api/kampus/', $data);
     }
-    public function editData($id, $data){
+    public function editData($id,$data){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
-        ])->put('http://localhost:8080/api/kampus/'.$id, $data);
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->put('http://localhost:8080/api/kampus/'.$id, $data,[
+            'key' => '123',
+        ]);
+        // dd($id);
     }
     public function deleteData($id){
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMSIsInVzZXJuYW1lIjoidWN1cCJ9.420nxHwD_Koo79Ld7ipye_3hglYqfjlPUcWery_ma4I',
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
         ])->delete('http://localhost:8080/api/kampus/'.$id, [
             'key' => '123',
         ]);

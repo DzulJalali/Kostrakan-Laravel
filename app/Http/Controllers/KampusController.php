@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Kampus;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
+use App\Models\Daerah;
+
 
 class KampusController extends Controller
 {
@@ -12,6 +16,9 @@ class KampusController extends Controller
     {
         $this->middleware('auth');
         $this->kampus = new Kampus();
+        $this->kecamatan = new Kecamatan();
+        $this->kelurahan = new Kelurahan();
+        $this->daerah = new Daerah();
     }
 
     public function index(request $request)
@@ -51,7 +58,12 @@ class KampusController extends Controller
 
     public function tampilTambah()
     {
-        return view('pages.kampus.tambah');
+        $data = [
+            'dataKecamatan'=>$this->kecamatan->all_data(),
+            'dataKelurahan'=>$this->kelurahan->all_data(),
+            'dataDaerah'=>$this->daerah->all_data(),
+        ];
+        return view('pages.kampus.tambah', $data);
     }
 
     public function submitTambahData(Request $request)
@@ -71,7 +83,11 @@ class KampusController extends Controller
     {
         $data = [
             'dataKampus'=>$this->kampus->data_id($id),
+            'dataKecamatan'=>$this->kecamatan->all_data(),
+            'dataKelurahan'=>$this->kelurahan->all_data(),
+            'dataDaerah'=>$this->daerah->all_data(),
         ];
+        // dd($data);
         return view('pages.kampus.edit',$data);
     }
 
@@ -102,9 +118,9 @@ class KampusController extends Controller
         return view('pages.kampus.detail',$data);
     }
 
-    //Mengambil data bangunan sesuai API kampus
-    public function fetchDataBangunan()
-    {
+    // //Mengambil data bangunan sesuai API kampus
+    // public function fetchDataBangunan($data)
+    // {
         
-    }
+    // }
 }

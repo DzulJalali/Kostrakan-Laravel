@@ -42,46 +42,39 @@ class DaerahController extends Controller
 
     public function tampilTambah()
     {
-        
-        $data = [
-            'dataKecamatan'=>$this->kecamatan->all_data(),
-            'dataKelurahan'=>$this->kelurahan->all_data(),
-        ];
-    return view('pages.daerah.tambah',$data);
+        return view('pages.daerah.tambah');
     }
 
     public function submitTambahData(Request $request)
     {
-        $request=[
-            'nama_daerah' => $request->nama_daerah,
-            'id_kecamatan' => $request->nama_kecamatan,
-            'id_kelurahan' => $request->nama_kelurahan,
-            'nearBy' => $request->nearBy,
-            ];
-            $this->daerah->tambahData($request);
+        $response = [
+            'namaKota' => $request->namaKota,
+        ];
+        $this->daerah->tambahData($response);
         return redirect()->route('daerah')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     public function edit($id)
     {
+        $response = Http::withHeaders([
+            'Authorization' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjoiMiIsInVzZXJuYW1lIjoiZmFpc2FsIn0.AHQOMcj5ZPdE1Q5r9jRsOy1hqAqFHdwHNsROHZUaznM',
+        ])->get('http://localhost:8080/api/kota/'.$id, [
+            'key' => '123',
+        ]);
         $data = [
             'dataDaerah'=>$this->daerah->data_id($id),
-            'dataKecamatan'=>$this->kecamatan->all_data(),
-            'dataKelurahan'=>$this->kelurahan->all_data(),
         ];
         return view('pages.daerah.edit',$data);
     }
 
     public function submitDataEdit(Request $request,$id)
     {
-        $response = [
-            'nama_daerah' => $request->nama_daerah,
-            'id_kecamatan' => $request->nama_kecamatan,
-            'id_kelurahan' => $request->nama_kelurahan,
-            'nearBy' => $request->nearBy,
+        $response=[
+            'namaKota' => $request->namaKota,
         ];
-         $this->daerah->editData($id,$response);
-         return redirect()->route('daerah')->with('success', 'Data Berhasil Di Tambahkan');
+        $this->daerah->editData($id,$response);
+        return redirect()->route('daerah')->with('success', 'Data Berhasil Di Update');
+        // dd($id);
      }
 
      public function deleteData($id){
@@ -94,5 +87,6 @@ class DaerahController extends Controller
             'dataDetail'=>$this->daerah->data_id($id),
         ];
         return view('pages.daerah.detail',$data);
+        // dd($data);
     }
 }

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Kecamatan;
+use App\Models\Kelurahan;
+use App\Models\Daerah;
+
+
 
 class KecamatanController extends Controller
 {
@@ -12,6 +16,8 @@ class KecamatanController extends Controller
     {
         $this->middleware('auth');
         $this->kecamatan = new Kecamatan();
+        $this->kelurahan = new Kelurahan();
+        $this->daerah = new Daerah();
     }
 
     public function index(request $request)
@@ -42,7 +48,12 @@ class KecamatanController extends Controller
 
     public function tampilTambah()
     {
-        return view('pages.kecamatan.tambah');
+        $data = [
+            'dataKecamatan'=>$this->kecamatan->all_data(),
+            'dataKelurahan'=>$this->kelurahan->all_data(),
+            'dataDaerah'=>$this->daerah->all_data(),
+        ];
+        return view('pages.kecamatan.tambah', $data);
     }
 
     public function submitTambahData(Request $request)
@@ -60,6 +71,7 @@ class KecamatanController extends Controller
     {
         $data = [
             'dataKecamatan'=>$this->kecamatan->data_id($id),
+            'dataDaerah'=>$this->daerah->all_data(),
         ];
         return view('pages.kecamatan.edit',$data);
     }

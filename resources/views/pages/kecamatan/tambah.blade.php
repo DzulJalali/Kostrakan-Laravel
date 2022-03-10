@@ -36,9 +36,14 @@ Tambah Kecamatan
                     <label for="namaKecamatan">Nama Kecamatan</label>
                     <input type="text" class="form-control" name="namaKecamatan" placeholder="Masukan Nama Kecamatan">
                 </div>
+                <p class="paragraf">Nama Kota:</p>
                 <div class="form-group">
-                    <label for="namaKota">Nama Kota</label>
-                    <input type="text" class="form-control" name="namaKota" placeholder="Masukan Nama Kota">
+                    <select name="id_kota" class="selectpicker show-tick form-control">
+                        <option selected="selected">-Nama Kota-</option>
+                        @foreach ($dataDaerah as $dataDaerah)
+                        <option value="{{ $dataDaerah['id_kota'] }}">{{ $dataDaerah['namaKota'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan

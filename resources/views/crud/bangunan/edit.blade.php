@@ -96,6 +96,19 @@
             </div>
 
             <div class="form-group">
+                <label for="namaKampus">Pilih Kampus yang dekat dengan Kos/Kontrakan :</label>
+                    <select name="namaKampus" class="selectpicker show-tick form-control">
+                        <option selected="selected">{{ $editBangunan->namaKampus}}</option>
+                        @foreach ($kampus as $kampus)
+                        <option value="{{ $kampus['namaKampus'] }}">{{ $kampus['namaKampus'] }}</option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">
+                    </div>
+                <small id="keterangan" class="form-text text-muted">Untuk Pemilihan lokasi dekat kampus OPSIONAL</small>
+            </div>
+
+            <div class="form-group">
                 <label for="gambar1"> Gambar 1</label>
                 <input class="form-control-file " type="file" name="gambar1" id="gambar1" />
                 <img src="{{ asset('uploads/' . $editBangunan->gambar1) }}" class="img-thumbnail" width="200px" />
