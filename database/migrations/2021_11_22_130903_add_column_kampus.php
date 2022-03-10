@@ -14,7 +14,7 @@ class AddColumnKampus extends Migration
     public function up()
     {
         Schema::table('building_details', function (Blueprint $table) {
-            $table->string('dekatKampus')->after('harga');
+            $table->string('namaKampus')->after('harga');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnKampus extends Migration
     public function down()
     {
         Schema::table('building_details', function (Blueprint $table) {
-            $table->dropColumn('dekatKampus');
+            $table->dropColumn('namaKampus');
         });
     }
 }
